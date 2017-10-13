@@ -35,6 +35,11 @@ public class VirtualPet {
 	public VirtualPet(String name, String description) {
 		this.name = name;
 		this.description = description;
+		this.hunger = rngNum5;
+		this.boredom = rngNum5;
+		this.needToPotty = rngNum5;
+		this.tiredness = rngNum5;
+		this.thirst = rngNum5;
 	}
 	
 	// Accessors
@@ -112,33 +117,9 @@ public class VirtualPet {
 		tiredness -= sleeping;
 		hunger += sleeping;
 	}
-
-	// Pet Actions
-	public int getFood() {
-		return hunger += rngNum5;
-	}
-
-	public int getPuke() {
-		return hunger -= rngNum5;
-	}
-
-	public int getExcercise() {
-		return boredom += rngNum5;
-	}
-
-	public int getCrazy() {
-		return boredom -= rngNum5;
-	}
-
-	public int getPooper() {
-		return needToPotty -= rngNum5;
-	}
-	public int waterPets() {
-		return thirst -= rngNum5;
-	}
+	
 	@Override
 	public String toString() {
-		return "" + this.name + "\t" + this.description + "\t" + this.hunger;
-	}
+		return "" + this.name + this.description + "\t|" + this.hunger + "\t|" + this.boredom + "\t|" + this.needToPotty + "\t|" + this.tiredness + "\t|" + this.thirst;}
 
 }
