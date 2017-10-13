@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class VirtualPet {
@@ -17,30 +18,25 @@ public class VirtualPet {
 	private int boredom;
 	private int needToPotty;
 	private int tiredness;
+	private int thirst;
 	String PetType;
 
 	// Constructor
-	public VirtualPet(String name, String description, int hunger, int boredom, int needToPotty, int tiredness) {
-		this.name = name;
+	public VirtualPet(String petName, String description, int hunger, int boredom, int needToPotty, int tiredness, int thirst) {
+		this.name = petName;
 		this.description = description;
 		this.hunger = hunger;
 		this.boredom = boredom;
 		this.needToPotty = needToPotty;
 		this.tiredness = tiredness;
+		this.thirst	= thirst;
 	}
+	
 	public VirtualPet(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
-	public VirtualPet(String petName, int hunger, int boredom, int needToPotty, int tiredness) {
-
-		this.petName = petName;
-		this.hunger = hunger;
-		this.boredom = boredom;
-		this.needToPotty = needToPotty;
-		this.tiredness = tiredness;
-	}
-
+	
 	// Accessors
 	public String getName() {
 		return name;
@@ -65,42 +61,19 @@ public class VirtualPet {
 	public int getTiredness() {
 		return tiredness;
 	}
-
+//Tick method
+	ArrayList<Integer> tick = new ArrayList<Integer>();
+	public void addAttributes() {
+		tick.add(hunger);
+		tick.add(boredom);
+		tick.add(needToPotty);
+		tick.add(tiredness);
+		tick.add(thirst);		
+		
+	}
+	
 	public int getTick() {
-
-		int tickStat = rngNum5;
-
-		if (tickStat < 25) {
-			hunger *= rngNum1;
-			boredom *= rngNum2;
-			needToPotty *= rngNum3;
-			tiredness *= rngNum4;
-			return tickStat;
-		}
-		if (tickStat >= 21 && rngNum5 <= 49) {
-			hunger += rngNum1;
-			boredom -= rngNum2;
-			needToPotty += rngNum3;
-			tiredness -= rngNum4;
-			return tickStat;
-		}
-		if (tickStat >= 50 && rngNum5 <= 74) {
-			hunger -= rngNum1;
-			boredom += rngNum2;
-			needToPotty -= rngNum3;
-			tiredness += rngNum4;
-			return tickStat;
-		}
-		if (tickStat >= 75 && rngNum5 <= 100) {
-			hunger /= rngNum1;
-			boredom /= rngNum2;
-			needToPotty /= rngNum3;
-			tiredness /= rngNum4;
-			return tickStat;
-		} else {
-			return 0;
-		}
-
+		
 	}
 
 	public int getDead() {
@@ -159,6 +132,13 @@ public class VirtualPet {
 
 	public int getPooper() {
 		return needToPotty -= rngNum5;
+	}
+	public int waterPets() {
+		return thirst -= rngNum5;
+	}
+	@Override
+	public String toString() {
+		return "" + this.name + "\t" + this.description + "\t" + this.hunger;
 	}
 
 }
