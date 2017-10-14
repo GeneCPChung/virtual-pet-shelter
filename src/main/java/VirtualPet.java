@@ -1,48 +1,57 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class VirtualPet {
 	Random rand = new Random();
 	int tickUpdt = rand.nextInt(5) + 1;
-	int rngNum1 = rand.nextInt(5) + 1;
-	int rngNum2 = rand.nextInt(5) + 1;
-	int rngNum3 = rand.nextInt(5) + 1;
-	int rngNum4 = rand.nextInt(5) + 1;
-	int rngNum5 = rand.nextInt(100) + 1;
+	int rngNum1 = rand.nextInt(25) + 1;
+	int rngNum2 = rand.nextInt(25) + 1;
+	int rngNum3 = rand.nextInt(25) + 1;
+	int rngNum4 = rand.nextInt(25) + 1;
+	int rngNum5 = rand.nextInt(25) + 1;
 
 	// Instance Data
-	private String petName;
+
 	private String name;
 	private String description;
-	private int hunger;
-	private int boredom;
-	private int needToPotty;
-	private int tiredness;
-	private int thirst;
-	String PetType;
+	private int hunger = rngNum1;
+	private int boredom = rngNum2;
+	private int needToPotty = rngNum3;
+	private int tiredness = rngNum4;
+	private int thirst = rngNum5;
+
+	// Stat array
+	/*
+	 * ArrayList<Integer> stats = new ArrayList<Integer>();
+	 * 
+	 * public void addStats() { stats.add(hunger); stats.add(boredom);
+	 * stats.add(needToPotty); stats.add(tiredness); stats.add(thirst); for (Integer
+	 * stat : stats) { stat += this.rngNum5; } }
+	 */
 
 	// Constructor
-	public VirtualPet(String petName, String description, int hunger, int boredom, int needToPotty, int tiredness, int thirst) {
-		this.name = petName;
+	public VirtualPet(String name, String description, int hunger, int boredom, int needToPotty, int tiredness,
+			int thirst) {
+		this.name = name;
 		this.description = description;
 		this.hunger = hunger;
 		this.boredom = boredom;
 		this.needToPotty = needToPotty;
 		this.tiredness = tiredness;
-		this.thirst	= thirst;
+		this.thirst = thirst;
 	}
-	
+
 	public VirtualPet(String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.hunger = rngNum5;
-		this.boredom = rngNum5;
-		this.needToPotty = rngNum5;
-		this.tiredness = rngNum5;
-		this.thirst = rngNum5;
 	}
+
+	
 	
 	// Accessors
+	
 	public String getName() {
 		return name;
 	}
@@ -66,19 +75,12 @@ public class VirtualPet {
 	public int getTiredness() {
 		return tiredness;
 	}
-//Tick method
+
+	// Tick method
 	ArrayList<Integer> tick = new ArrayList<Integer>();
-	public void addAttributes() {
-		tick.add(hunger);
-		tick.add(boredom);
-		tick.add(needToPotty);
-		tick.add(tiredness);
-		tick.add(thirst);		
-		
-	}
-	
-	public int getTick() {
-		
+
+	public ArrayList<Integer> getTick() {
+		return this.tick;
 	}
 
 	public int getDead() {
@@ -88,7 +90,7 @@ public class VirtualPet {
 
 	// Name method
 	public boolean enteredName(String enteredName) {
-		return petName.equals(enteredName);
+		return name.equals(enteredName);
 	}
 
 	// Actions
@@ -117,9 +119,11 @@ public class VirtualPet {
 		tiredness -= sleeping;
 		hunger += sleeping;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "" + this.name + this.description + "\t|" + this.hunger + "\t|" + this.boredom + "\t|" + this.needToPotty + "\t|" + this.tiredness + "\t|" + this.thirst;}
+		return "" + this.name + this.description + "\t|" + this.hunger + "\t|" + this.boredom + "\t|" + this.needToPotty
+				+ "\t|" + this.tiredness + "\t|" + this.thirst;
+	}
 
 }
