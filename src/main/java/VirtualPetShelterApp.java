@@ -19,8 +19,7 @@ public class VirtualPetShelterApp {
 		petShelter.addPet(shemp);
 
 		System.out.println("Welcome to our animal shelter! Here is a list of the animals staying with us: \n");
-		System.out.println("Name\t\t|Hunger\t|Bored\t|Potty\t|tired\t|thirst");
-		System.out.println("-------\t\t|------\t|------\t|------\t|------\t|-------");
+		statTemplate();
 		for (Entry<String, VirtualPet> entry : petShelter.shelteredPets.entrySet()) {
 			System.out.println(entry.getValue());
 		}
