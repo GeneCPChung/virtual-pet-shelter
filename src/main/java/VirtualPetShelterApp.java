@@ -7,7 +7,6 @@ public class VirtualPetShelterApp {
 		Scanner input = new Scanner(System.in);
 
 		VirtualPetShelter petFace = new VirtualPetShelter();
-		VirtualPet petStats = new VirtualPet(null, null);
 		VirtualPet curly = new VirtualPet("shemp", " The Sheep");
 		VirtualPet larry = new VirtualPet("larry", " The Lamma");
 		VirtualPet moe = new VirtualPet("moe", " The Mole");

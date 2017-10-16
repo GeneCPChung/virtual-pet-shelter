@@ -39,7 +39,6 @@ public class VirtualPet {
 	}
 
 	// Accessors
-
 	public int getTick() {
 
 		int tickStat = rngNum6;
