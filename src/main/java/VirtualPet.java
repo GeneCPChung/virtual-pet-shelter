@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class VirtualPet {
 	Random rand = new Random();
+	int rngAct = rand.nextInt(10) + 1;
 	int rngNum1 = rand.nextInt(10) + 1;
 	int rngNum2 = rand.nextInt(10) + 1;
 	int rngNum3 = rand.nextInt(10) + 1;
@@ -95,32 +96,32 @@ public class VirtualPet {
 
 	// Actions
 	void feeding() {
-		int eating = rngNum5;
+		int eating = rngAct;
 		hunger += eating;
 		needToPotty += eating;
 
 	}
 
 	void playing() {
-		int play = rngNum5;
+		int play = rngAct;
 		boredom += play;
 		tiredness += play;
 	}
 
 	void pooping() {
-		int pooping = rngNum5;
+		int pooping = rngAct;
 		needToPotty -= pooping;
 		boredom += pooping;
 	}
 
 	void sleeping() {
-		int sleeping = rngNum5;
+		int sleeping = rngAct;
 		tiredness -= sleeping;
 		hunger += sleeping;
 	}
 
 	void drinking() {
-		int drinking = rngNum5;
+		int drinking = rngAct;
 		thirst -= drinking;
 		needToPotty += drinking;
 	}

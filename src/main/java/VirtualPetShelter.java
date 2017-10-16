@@ -18,17 +18,26 @@ public class VirtualPetShelter {
 		return name;
 	}
 
-	public void addPet(VirtualPet shelteredPet) {
-		shelteredPets.put(shelteredPet.getName(), shelteredPet);
-	}
-
-	public void removePet(String name) {
-		shelteredPets.remove(name);
-	}
-
 	public void feedPets() {
-		for (VirtualPet pet : shelteredPets.values()) {
-			pet.feeding();
+		for (VirtualPet pets : shelteredPets.values()) {
+			pets.feeding();
+		}
+	}
+
+	public void playWithPet(String name) {
+		VirtualPet pets = shelteredPets.get(name);
+		pets.playing();
+	}
+
+	public void pottyPets() {
+		for (VirtualPet pets : shelteredPets.values()) {
+			pets.pooping();
+		}
+	}
+
+	public void restPets() {
+		for (VirtualPet pets : shelteredPets.values()) {
+			pets.sleeping();
 		}
 	}
 
@@ -38,16 +47,19 @@ public class VirtualPetShelter {
 		}
 	}
 
-	public void playWithPet(String name) {
-		VirtualPet pets = shelteredPets.get(name);
-		pets.playing();
-	}
-
 	public void petUpdate() {
-		for (VirtualPet pet : shelteredPets.values()) {
-		pet.getTick();
+		for (VirtualPet pets : shelteredPets.values()) {
+			pets.getTick();
 		}
-
 	}
+	
+	public void addPet(VirtualPet shelteredPet) {
+		shelteredPets.put(shelteredPet.getName(), shelteredPet);
+	}
+
+	public void removePet(String name) {
+		shelteredPets.remove(name);
+	}
+
 
 }
