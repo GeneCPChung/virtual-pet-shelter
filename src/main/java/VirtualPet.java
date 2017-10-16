@@ -5,15 +5,14 @@ import java.util.Random;
 
 public class VirtualPet {
 	Random rand = new Random();
-	int tickUpdt = rand.nextInt(5) + 1;
-	int rngNum1 = rand.nextInt(25) + 1;
-	int rngNum2 = rand.nextInt(25) + 1;
-	int rngNum3 = rand.nextInt(25) + 1;
-	int rngNum4 = rand.nextInt(25) + 1;
-	int rngNum5 = rand.nextInt(25) + 1;
+	int rngNum1 = rand.nextInt(10) + 1;
+	int rngNum2 = rand.nextInt(10) + 1;
+	int rngNum3 = rand.nextInt(10) + 1;
+	int rngNum4 = rand.nextInt(10) + 1;
+	int rngNum5 = rand.nextInt(10) + 1;
+	int rngNum6 = rand.nextInt(10) + 1;
 
 	// Instance Data
-
 	private String name;
 	private String description;
 	private int hunger = rngNum1;
@@ -21,15 +20,6 @@ public class VirtualPet {
 	private int needToPotty = rngNum3;
 	private int tiredness = rngNum4;
 	private int thirst = rngNum5;
-
-	// Stat array
-	/*
-	 * ArrayList<Integer> stats = new ArrayList<Integer>();
-	 * 
-	 * public void addStats() { stats.add(hunger); stats.add(boredom);
-	 * stats.add(needToPotty); stats.add(tiredness); stats.add(thirst); for (Integer
-	 * stat : stats) { stat += this.rngNum5; } }
-	 */
 
 	// Constructor
 	public VirtualPet(String name, String description, int hunger, int boredom, int needToPotty, int tiredness,
@@ -48,10 +38,34 @@ public class VirtualPet {
 		this.description = description;
 	}
 
-	
-	
 	// Accessors
-	
+
+	public int getTick() {
+
+		int tickStat = rngNum6;
+		if (tickStat < 6) {
+
+			hunger += rngNum1;
+			boredom += rngNum2;
+			needToPotty += rngNum3;
+			tiredness += rngNum4;
+			thirst += rngNum5;
+			return tickStat;
+
+		}
+		if (tickStat >= 6) {
+			hunger += rngNum5;
+			boredom += rngNum4;
+			needToPotty += rngNum3;
+			tiredness += rngNum2;
+			thirst += rngNum1;
+			return tickStat;
+
+		} else {
+			return 0;
+		}
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -76,21 +90,8 @@ public class VirtualPet {
 		return tiredness;
 	}
 
-	// Tick method
-	ArrayList<Integer> tick = new ArrayList<Integer>();
-
-	public ArrayList<Integer> getTick() {
-		return this.tick;
-	}
-
-	public int getDead() {
-		System.exit(0);
-		return 0;
-	}
-
-	// Name method
-	public boolean enteredName(String enteredName) {
-		return name.equals(enteredName);
+	public int getThirst() {
+		return tiredness;
 	}
 
 	// Actions
@@ -105,7 +106,6 @@ public class VirtualPet {
 		int play = rngNum5;
 		boredom += play;
 		tiredness += play;
-
 	}
 
 	void pooping() {
@@ -118,6 +118,12 @@ public class VirtualPet {
 		int sleeping = rngNum5;
 		tiredness -= sleeping;
 		hunger += sleeping;
+	}
+
+	void drinking() {
+		int drinking = rngNum5;
+		thirst -= drinking;
+		needToPotty += drinking;
 	}
 
 	@Override

@@ -50,3 +50,18 @@ In addition to the requirements from last week's project:
 		} else {
 			return 0;
 		}
+		
+		
+		
+			if (userOpt.contains("curly")) {
+				petFace.removePet(curly);
+				}
+				if (userOpt.contains("larry")) {
+					petFace.removePet(larry);
+					}
+				if (userOpt.contains("moe")) {
+					petFace.removePet(moe);
+					}
+				if (userOpt.contains("shemp")) {
+					petFace.removePet(shemp);
+					}

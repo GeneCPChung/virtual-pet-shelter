@@ -1,15 +1,17 @@
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class VirtualPetShelter {
 
 	Map<String, VirtualPet> shelteredPets = new HashMap<String, VirtualPet>();
 
 	public Collection<VirtualPet> shelteredPetsValues() {
-		Collection<VirtualPet> petRoster = shelteredPets.values();
-		return petRoster;
+		Collection<VirtualPet> shelteredPetsValue = shelteredPets.values();
+		return shelteredPetsValue;
 	}
 
 	public VirtualPet accessShelteredPet(VirtualPet name) {
@@ -32,16 +34,20 @@ public class VirtualPetShelter {
 
 	public void waterPets() {
 		for (VirtualPet pets : shelteredPets.values()) {
-			pets.feeding();
+			pets.drinking();
 		}
 	}
 
 	public void playWithPet(String name) {
-		for (VirtualPet pets : shelteredPets.values()) {
-			if (shelteredPets.containsKey(name)) {
-				pets.playing();
-			}
+		VirtualPet pets = shelteredPets.get(name);
+		pets.playing();
+	}
+
+	public void petUpdate() {
+		for (VirtualPet pet : shelteredPets.values()) {
+		pet.getTick();
 		}
+
 	}
 
 }
